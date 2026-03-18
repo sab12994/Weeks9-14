@@ -13,7 +13,6 @@ public class GrowerCG : MonoBehaviour
     {
         flower.localScale = Vector2.zero;
 
-        //button = GetComponent<GameObject>();
         buttonActive = true;
     }
 
