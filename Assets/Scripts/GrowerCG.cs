@@ -4,7 +4,9 @@ using UnityEngine;
 public class GrowerCG : MonoBehaviour
 {
     public Transform flower;
-    //public GameObject button; 
+    public GameObject button; 
+
+    bool buttonActive;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,6 +14,7 @@ public class GrowerCG : MonoBehaviour
         flower.localScale = Vector2.zero;
 
         //button = GetComponent<GameObject>();
+        buttonActive = true;
     }
 
     public void DoTheGrowing()
@@ -22,7 +25,7 @@ public class GrowerCG : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        button.SetActive(buttonActive);
     }
 
     IEnumerator GrowFlower()
@@ -36,7 +39,7 @@ public class GrowerCG : MonoBehaviour
             flower.localScale = Vector2.one * t;
             yield return null;
 
-            //button.SetActive(false);
+            button.SetActive(false);
         }
         Debug.Log("Finished growing a flower");
     }
