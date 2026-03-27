@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
@@ -12,18 +13,44 @@ public class FlowerGrower : MonoBehaviour
     Coroutine growTheFlowerRightCoroutine;
     Coroutine growTheFlowerLeftCoroutine;
 
+    public GameObject button;
+    public GameObject buttonRight;
+    public GameObject buttonLeft;
+    public GameObject buttonHeal;
+    bool buttonActive;
+    bool buttonRightActive;
+    bool buttonLeftActive;
+    bool buttonHealActive;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //no flowers in the beginning
         flower.localScale = Vector2.zero;
         flowerRight.localScale = Vector2.zero;
         flowerLeft.localScale = Vector2.zero;
+
+        //set buttons' states
+        buttonActive = true;
+        buttonRightActive = true;
+        buttonLeftActive = true;
+        buttonHealActive = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //buttons have their assigned state all the time
+        button.SetActive(buttonActive);
+        buttonRight.SetActive(buttonRightActive);
+        buttonLeft.SetActive(buttonLeftActive);
+        buttonHeal.SetActive(buttonHealActive);
+
+        //if all buttons are turned off, make a heal button appear
+        if(buttonActive == false && buttonRightActive == false && buttonLeftActive == false)
+        {
+            buttonHeal.SetActive(true);// doesn't work for some reason, solve it later
+        }
     }
 
     public void StartTheFlowerGrow()
@@ -37,6 +64,7 @@ public class FlowerGrower : MonoBehaviour
             StopCoroutine(growTheFlowerCoroutine);
         }
         doTheGrowingCoroutine = StartCoroutine(DoTheGrowing());
+
     }
 
     public void StartTheFlowerRightGrow()
@@ -74,7 +102,10 @@ public class FlowerGrower : MonoBehaviour
             t += Time.deltaTime;
             flower.localScale = Vector2.one * t;
             yield return null;
-        }
+
+            button.SetActive(false);
+        }      
+        
     }
 
     IEnumerator GrowFlowerRight()
@@ -86,6 +117,8 @@ public class FlowerGrower : MonoBehaviour
             t += Time.deltaTime;
             flowerRight.localScale = Vector2.one * t;
             yield return null;
+
+            buttonRight.SetActive(false);
         }
     }
 
@@ -98,6 +131,8 @@ public class FlowerGrower : MonoBehaviour
             t += Time.deltaTime;
             flowerLeft.localScale = Vector2.one * t;
             yield return null;
+
+            buttonLeft.SetActive(false);
         }
     }
 
