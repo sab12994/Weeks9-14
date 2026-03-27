@@ -23,8 +23,8 @@ public class ControllerMovementSA : MonoBehaviour
         movement = context.ReadValue<Vector2>();
     }
 
-    //public void OnInteract(InputAction.CallbackContext context)
-    //{
+    public void OnInteract(InputAction.CallbackContext context)
+    {
 
-    //}
+    }
 }
