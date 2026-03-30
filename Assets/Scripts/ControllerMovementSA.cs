@@ -6,15 +6,13 @@ public class ControllerMovementSA : MonoBehaviour
     public float speed = 5;
     public Vector2 movement;
     public GameObject blur;
-    public GameObject healthbar;
-    public GameObject healthbar2;
+    public GameObject healthbar;    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         blur.SetActive(false);
-        healthbar.SetActive(false);
-        healthbar2.SetActive(false);
+        healthbar.SetActive(false);        
     }
 
     // Update is called once per frame
@@ -59,6 +57,8 @@ public class ControllerMovementSA : MonoBehaviour
 
     public void PoisonMe()
     {
-        healthbar2.SetActive(true);
+        float s = 0.3f;
+        speed = speed * s;
+        GetComponent<SpriteRenderer>().color = Color.green;
     }
 }

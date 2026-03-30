@@ -38,7 +38,7 @@ public class FlowerGrower : MonoBehaviour
         buttonRight.SetActive(true);
         buttonLeft.SetActive(true);
         buttonHeal.SetActive(false);
-        buttonPoison.SetActive(false);
+        buttonPoison.SetActive(true);
     }
 
     // Update is called once per frame
@@ -48,7 +48,7 @@ public class FlowerGrower : MonoBehaviour
         {
             Debug.Log("the poison potion");
             OnFirstTouch.Invoke();
-            
+            buttonPoison.SetActive(false);
         }
         else
         {
