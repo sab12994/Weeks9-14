@@ -17,10 +17,7 @@ public class FlowerGrower : MonoBehaviour
     public GameObject buttonRight;
     public GameObject buttonLeft;
     public GameObject buttonHeal;
-    bool buttonActive;
-    bool buttonRightActive;
-    bool buttonLeftActive;
-    bool buttonHealActive;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,9 +37,9 @@ public class FlowerGrower : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {        
+    {
         //if all buttons are turned off, make a heal button appear
-        if(button.activeSelf == false && buttonRight.activeSelf == false && buttonLeft.activeSelf == false)
+        if (!button.activeSelf && !buttonRight.activeSelf && !buttonLeft.activeSelf)
         {
             buttonHeal.SetActive(true);// doesn't work for some reason, solve it later
         }
@@ -141,5 +138,11 @@ public class FlowerGrower : MonoBehaviour
     IEnumerator DoTheLeftGrowing()
     {
         yield return growTheFlowerRightCoroutine = StartCoroutine(GrowFlowerLeft());
+    }
+
+
+    public void SlowMe()
+    {
+        
     }
 }
