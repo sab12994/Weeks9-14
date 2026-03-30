@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FlowerGrower : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class FlowerGrower : MonoBehaviour
     public GameObject buttonRight;
     public GameObject buttonLeft;
     public GameObject buttonHeal;
+    public GameObject buttonPoison;
+    
+    public UnityEvent OnFirstTouch;
+    public UnityEvent OnSecondTouch;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,16 +38,30 @@ public class FlowerGrower : MonoBehaviour
         buttonRight.SetActive(true);
         buttonLeft.SetActive(true);
         buttonHeal.SetActive(false);
+        buttonPoison.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if all buttons are turned off, make a heal button appear
         if (!button.activeSelf && !buttonRight.activeSelf && !buttonLeft.activeSelf)
         {
-            buttonHeal.SetActive(true);// doesn't work for some reason, solve it later
+            Debug.Log("the poison potion");
+            OnFirstTouch.Invoke();
+            
         }
+        else
+        {
+            Debug.Log("the heal potion");
+            OnSecondTouch.Invoke();
+        }
+
+
+        ////if all buttons are turned off, make a heal button appear
+        //if (!button.activeSelf && !buttonRight.activeSelf && !buttonLeft.activeSelf)
+        //{
+        //    buttonHeal.SetActive(true);// doesn't work for some reason, solve it later
+        //}
     }
 
     public void StartTheFlowerGrow()
@@ -139,10 +158,15 @@ public class FlowerGrower : MonoBehaviour
     {
         yield return growTheFlowerRightCoroutine = StartCoroutine(GrowFlowerLeft());
     }
-
-
-    public void SlowMe()
+    
+    public void heal()
     {
-        
+        buttonHeal.SetActive(true);
     }
+
+    public void poison()
+    {
+        buttonPoison.SetActive(true);
+    }
+
 }
