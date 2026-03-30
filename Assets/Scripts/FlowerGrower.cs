@@ -30,24 +30,19 @@ public class FlowerGrower : MonoBehaviour
         flowerRight.localScale = Vector2.zero;
         flowerLeft.localScale = Vector2.zero;
 
-        //set buttons' states
-        buttonActive = true;
-        buttonRightActive = true;
-        buttonLeftActive = true;
-        buttonHealActive = false;
+     
+        //buttons have their assigned state all the time
+        button.SetActive(true);
+        buttonRight.SetActive(true);
+        buttonLeft.SetActive(true);
+        buttonHeal.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
-    {
-        //buttons have their assigned state all the time
-        button.SetActive(buttonActive);
-        buttonRight.SetActive(buttonRightActive);
-        buttonLeft.SetActive(buttonLeftActive);
-        buttonHeal.SetActive(buttonHealActive);
-
+    {        
         //if all buttons are turned off, make a heal button appear
-        if(buttonActive == false && buttonRightActive == false && buttonLeftActive == false)
+        if(button.activeSelf == false && buttonRight.activeSelf == false && buttonLeft.activeSelf == false)
         {
             buttonHeal.SetActive(true);// doesn't work for some reason, solve it later
         }
@@ -73,7 +68,7 @@ public class FlowerGrower : MonoBehaviour
         {
             StopCoroutine(doTheGrowingCoroutine);
         }
-        if (growTheFlowerCoroutine != null)
+        if (growTheFlowerRightCoroutine != null)
         {
             StopCoroutine(growTheFlowerRightCoroutine);
         }
@@ -97,13 +92,12 @@ public class FlowerGrower : MonoBehaviour
     {        
         flower.localScale = Vector2.zero;
         float t = 0;
+        button.SetActive(false); 
         while (t < 1)
         {
             t += Time.deltaTime;
             flower.localScale = Vector2.one * t;
-            yield return null;
-
-            button.SetActive(false);
+            yield return null;            
         }      
         
     }
@@ -112,13 +106,12 @@ public class FlowerGrower : MonoBehaviour
     {
         flowerRight.localScale = Vector2.zero;
         float t = 0;
+        buttonRight.SetActive(false);
         while (t < 1)
         {
             t += Time.deltaTime;
             flowerRight.localScale = Vector2.one * t;
-            yield return null;
-
-            buttonRight.SetActive(false);
+            yield return null;            
         }
     }
 
@@ -126,13 +119,12 @@ public class FlowerGrower : MonoBehaviour
     {
         flowerLeft.localScale = Vector2.zero;
         float t = 0;
+        buttonLeft.SetActive(false);
         while (t < 1)
         {
             t += Time.deltaTime;
             flowerLeft.localScale = Vector2.one * t;
-            yield return null;
-
-            buttonLeft.SetActive(false);
+            yield return null;            
         }
     }
 
