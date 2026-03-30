@@ -50,7 +50,7 @@ public class ControllerMovementSA : MonoBehaviour
     public void HealMe()
     {
         blur.SetActive(false);
-        healthbar.SetActive(true);
+        healthbar.SetActive(false);
         speed = 5;
 
     }
