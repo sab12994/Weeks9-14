@@ -8,29 +8,27 @@ public class ControllerMovementSA : MonoBehaviour
     public GameObject blur;
     public GameObject healthbar;    
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         blur.SetActive(false);
         healthbar.SetActive(false);        
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        //movement!
         transform.position += (Vector3)movement * speed * Time.deltaTime;
     }
 
+    //for the player input
     public void OnMove(InputAction.CallbackContext context)
     {
         movement = context.ReadValue<Vector2>();
     }
-
-    public void OnInteract(InputAction.CallbackContext context)
-    {
-
-    }
-
+        
+    //functions for buttons
     public void SlowMe()
     {
         float s = 0.6f;
@@ -52,13 +50,13 @@ public class ControllerMovementSA : MonoBehaviour
         blur.SetActive(false);
         healthbar.SetActive(false);
         speed = 5;
-        GetComponent<SpriteRenderer>().color = Color.white;
+        GetComponent<SpriteRenderer>().color = Color.white; //colors the player back to white
     }
 
     public void PoisonMe()
     {
         float s = 0.3f;
         speed = speed * s;
-        GetComponent<SpriteRenderer>().color = Color.green;
+        GetComponent<SpriteRenderer>().color = Color.green; //colors the player green, to make him look "sick"
     }
 }

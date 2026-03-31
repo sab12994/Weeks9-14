@@ -1,25 +1,28 @@
+using TMPro;
 using Unity.VisualScripting.InputSystem;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
+    //this script is for staff that I'm not sure where to put in. Might not use it at all
+
     public SpriteRenderer sensorBox;
     public bool isInBox = false;
     public UnityEvent OnEnter;
     public UnityEvent OnExit;
+    public GameObject description;
 
-    //this script is for staff that I'm not sure where to put in. Might not use it at all
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
-
+        description.SetActive(false);
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
+        //made the sensor box
         if (sensorBox.bounds.Contains(transform.position) == true)
         {
             //Y: player tripped the sensor 
@@ -32,6 +35,7 @@ public class UIManager : MonoBehaviour
                 //player just entered the sensor 
                 isInBox = true;
                 Debug.Log("entered the sensor");
+                description.SetActive(true);
                 OnEnter.Invoke();
             }
         }
@@ -42,6 +46,7 @@ public class UIManager : MonoBehaviour
                 //just left the hazard
                 isInBox = false;
                 Debug.Log("excited the sensor");
+                description.SetActive(false);
                 OnExit.Invoke();
             }
             else
