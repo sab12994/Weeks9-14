@@ -10,11 +10,12 @@ public class UIManager : MonoBehaviour
     public SpriteRenderer sensorBox;
     public bool isInBox = false;    
     public GameObject description;
-
+    
+    
     
     void Start()
     {
-        description.SetActive(false);
+        description.SetActive(false);        
     }
 
    
@@ -33,8 +34,7 @@ public class UIManager : MonoBehaviour
                 //player just entered the sensor 
                 isInBox = true;
                 Debug.Log("entered the sensor");
-                description.SetActive(true);
-                
+                description.SetActive(true);                
             }
         }
         else
@@ -44,8 +44,7 @@ public class UIManager : MonoBehaviour
                 //just left the hazard
                 isInBox = false;
                 Debug.Log("excited the sensor");
-                description.SetActive(false);
-                
+                description.SetActive(false);                
             }
             else
             {
