@@ -52,7 +52,7 @@ public class ControllerMovementSA : MonoBehaviour
         blur.SetActive(false);
         healthbar.SetActive(false);
         speed = 5;
-
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     public void PoisonMe()
