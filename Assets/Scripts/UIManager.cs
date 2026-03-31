@@ -8,9 +8,7 @@ public class UIManager : MonoBehaviour
     //this script is for staff that I'm not sure where to put in. Might not use it at all
 
     public SpriteRenderer sensorBox;
-    public bool isInBox = false;
-    public UnityEvent OnEnter;
-    public UnityEvent OnExit;
+    public bool isInBox = false;    
     public GameObject description;
 
     
@@ -36,7 +34,7 @@ public class UIManager : MonoBehaviour
                 isInBox = true;
                 Debug.Log("entered the sensor");
                 description.SetActive(true);
-                OnEnter.Invoke();
+                
             }
         }
         else
@@ -47,7 +45,7 @@ public class UIManager : MonoBehaviour
                 isInBox = false;
                 Debug.Log("excited the sensor");
                 description.SetActive(false);
-                OnExit.Invoke();
+                
             }
             else
             {
