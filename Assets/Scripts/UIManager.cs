@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     
     void Start()
     {
-        description.SetActive(false);        
+        description.SetActive(false);  //turn off the text from the beginning
     }
 
    

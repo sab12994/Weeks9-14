@@ -44,6 +44,7 @@ public class FlowerGrower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //make so that when all butons are turned off the heal button appears
         if (!button.activeSelf && !buttonRight.activeSelf && !buttonLeft.activeSelf)
         {
             Debug.Log("the poison potion");
@@ -57,13 +58,13 @@ public class FlowerGrower : MonoBehaviour
         }
 
 
-        ////if all buttons are turned off, make a heal button appear
         //if (!button.activeSelf && !buttonRight.activeSelf && !buttonLeft.activeSelf)
         //{
         //    buttonHeal.SetActive(true);// doesn't work for some reason, solve it later
         //}
     }
 
+    //functions for coroutines:
     public void StartTheFlowerGrow()
     {
         if (doTheGrowingCoroutine != null)
@@ -159,6 +160,7 @@ public class FlowerGrower : MonoBehaviour
         yield return growTheFlowerRightCoroutine = StartCoroutine(GrowFlowerLeft());
     }
     
+    //turn on or off some buttons
     public void heal()
     {
         buttonHeal.SetActive(true);

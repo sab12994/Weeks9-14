@@ -11,6 +11,7 @@ public class ControllerMovementSA : MonoBehaviour
     
     void Start()
     {
+        //make these turned off when the game starts
         blur.SetActive(false);
         healthbar.SetActive(false);        
     }
