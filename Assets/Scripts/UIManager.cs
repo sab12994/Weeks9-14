@@ -41,14 +41,14 @@ public class UIManager : MonoBehaviour
         {
             if (isInBox == true)
             {
-                //just left the hazard
+                //just left the sensor
                 isInBox = false;
                 Debug.Log("excited the sensor");
                 description.SetActive(false);                
             }
             else
             {
-                //we are outside of a sensor, don't do anything yet
+                //don't do anything yet
             }
         }
     }

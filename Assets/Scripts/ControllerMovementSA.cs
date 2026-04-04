@@ -6,14 +6,19 @@ public class ControllerMovementSA : MonoBehaviour
     public float speed = 5;
     public Vector2 movement;
     public GameObject blur;
-    public GameObject healthbar;    
-
+    public GameObject healthbar;
+    public GameObject requirements;
+    public AudioSource sound;
+    public AudioSource soundHappyEnd;
     
+
+
     void Start()
     {
         //make these turned off when the game starts
         blur.SetActive(false);
-        healthbar.SetActive(false);        
+        healthbar.SetActive(false);
+        
     }
 
     
@@ -27,6 +32,10 @@ public class ControllerMovementSA : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         movement = context.ReadValue<Vector2>();
+        if(context.performed == true)
+        {
+            sound.Play();
+        }
     }
         
     //functions for buttons
@@ -52,6 +61,10 @@ public class ControllerMovementSA : MonoBehaviour
         healthbar.SetActive(false);
         speed = 5;
         GetComponent<SpriteRenderer>().color = Color.white; //colors the player back to white
+
+        soundHappyEnd.Play();
+        requirements.SetActive(false);
+        
     }
 
     public void PoisonMe()

@@ -3,6 +3,7 @@ using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEngine.ParticleSystem;
 
 public class FlowerGrower : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class FlowerGrower : MonoBehaviour
     public GameObject buttonLeft;
     public GameObject buttonHeal;
     public GameObject buttonPoison;
-    
+    public GameObject particles;
+
     public UnityEvent OnFirstTouch;
     public UnityEvent OnSecondTouch;
     
@@ -39,6 +41,7 @@ public class FlowerGrower : MonoBehaviour
         buttonLeft.SetActive(true);
         buttonHeal.SetActive(false);
         buttonPoison.SetActive(true);
+        particles.SetActive(false);
     }
 
     // Update is called once per frame
@@ -50,6 +53,7 @@ public class FlowerGrower : MonoBehaviour
             Debug.Log("the poison potion");
             OnFirstTouch.Invoke();
             buttonPoison.SetActive(false);
+            particles.SetActive(true);
         }
         else
         {
