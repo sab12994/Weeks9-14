@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,11 +10,32 @@ public class localMultiplayerController : MonoBehaviour
     public PlayerInput playerInput;
     public localMultiplayerManager manager;
 
+    //public Transform duckie;
+
+    //Coroutine doTheGrowingCoroutine;
+    //Coroutine growTheCoroutine;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
     }
+
+    //public void StartTheTreeGrow()
+    //{
+    //    if (doTheGrowingCoroutine != null)
+    //    {
+    //        StopCoroutine(doTheGrowingCoroutine);
+    //    }
+        
+    //    doTheGrowingCoroutine = StartCoroutine(DoTheGrowing());
+    //}
+
+    //IEnumerator DoTheGrowing()
+    //{
+    //    yield return growTheCoroutine = StartCoroutine(GrowDuckie());
+    //}
+
 
     // Update is called once per frame
     void Update()
@@ -34,4 +57,15 @@ public class localMultiplayerController : MonoBehaviour
         }
         
     }
+
+    //IEnumerator GrowDuckie()
+    //{        
+    //    float t = 0;
+    //    while (t < 1)
+    //    {
+    //        t += Time.deltaTime;
+    //        duckie.localScale = Vector2.one * t;
+    //        yield return null;
+    //    }
+    //}
 }
